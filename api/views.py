@@ -18,6 +18,6 @@ class MovieSearchView(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         if not queryset.exists():
-            return Response({'error', 'No Movie Found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'No Movie Found'}, status=status.HTTP_404_NOT_FOUND)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
